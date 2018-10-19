@@ -1,17 +1,9 @@
+<app-header (out)="decide($event)"></app-header>
 <div class="container">
-
-    <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
-    <hr>
-    <div class="row">
-        <div class="col-xs-12">
-            <button class="btn btn-primary" (click)="onChangeButton()">OnChangeButton</button>
-            <app-server-element [element]="serverElement" *ngFor="let serverElement of serverElements" [name]="serverElement.name">
-                <p>
-                    <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
-                    <em *ngIf="serverElement.type === 'blueprint'" style="color: blue">{{ serverElement.content }}</em>
-                </p>
-            </app-server-element>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-recipes *ngIf="role === 'recipe'" ></app-recipes>
+      <app-shopping-list *ngIf="role === 'shopping-list'" ></app-shopping-list>
     </div>
-    
+  </div>
 </div>
